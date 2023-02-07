@@ -99,11 +99,14 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     )
 }
 
+
+
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
         paddingHorizontal: 24,
         paddingVertical: 48,
+        alignItems: "center"
     },
     btnsWrapper: {
         flexDirection: "row",
