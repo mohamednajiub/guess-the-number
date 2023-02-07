@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput, View, StyleSheet, Alert, useWindowDimensions } from 'react-native';
+import { TextInput, View, StyleSheet, Alert, useWindowDimensions, KeyboardAvoidingView, ScrollView } from 'react-native';
 import Colors from '../constants/colors';
 
 import CustomButton from '../components/ui/CustomButton';
@@ -47,30 +47,36 @@ const StartGameScreen = ({ onPickNumber }) => {
 
 
     return (
-        <View style={[styles.rootContainer, { marginTop: marginTop }]}>
-            <Title>Guess My Number</Title>
-            <Card>
-                <InstructionText>Enter a Number</InstructionText>
+        <ScrollView style={{ flex: 1 }}>
+            <KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
+                <View style={[styles.rootContainer, { marginTop: marginTop }]}>
 
 
-                <TextInput
-                    style={styles.inputField}
-                    maxLength={2}
-                    keyboardType="number-pad"
-                    autoCorrect={false}
-                    value={enteredNumber}
-                    onChangeText={numberInputHandler}
-                />
-                <View style={styles.btnsWrapper}>
-                    <View style={{ flex: 1 }}>
-                        <CustomButton onPress={resetInputHandler}>Reset</CustomButton>
-                    </View>
-                    <View style={{ flex: 1 }}>
-                        <CustomButton onPress={confirmInputHandler}>Confirm</CustomButton>
-                    </View>
+                    <Title>Guess My Number</Title>
+                    <Card>
+                        <InstructionText>Enter a Number</InstructionText>
+
+
+                        <TextInput
+                            style={styles.inputField}
+                            maxLength={2}
+                            keyboardType="number-pad"
+                            autoCorrect={false}
+                            value={enteredNumber}
+                            onChangeText={numberInputHandler}
+                        />
+                        <View style={styles.btnsWrapper}>
+                            <View style={{ flex: 1 }}>
+                                <CustomButton onPress={resetInputHandler}>Reset</CustomButton>
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <CustomButton onPress={confirmInputHandler}>Confirm</CustomButton>
+                            </View>
+                        </View>
+                    </Card>
                 </View>
-            </Card>
-        </View>
+            </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 
